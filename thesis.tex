@@ -27,7 +27,7 @@ integrity constraints over data stored in ontologies built using Semantic Web
 technologies.
 
 This work is motivated by data validation requirements in the @Web platform, a
-semantic web application that allows domain experts to extract data in
+Semantic Web application that allows domain experts to extract data in
 scientific documents, and researchers to explore and query those data via a
 graphical user interface. The extracted data is stored in a publicly
 accessible RDF graph following a predefined OWL ontology, and shared with the
@@ -43,17 +43,26 @@ describing and constraining the contents of RDF graphs and the available tools
 implementing these recommendations. We decide to focus our analysis on SPARQL,
 Shape Expressions and SHACL. We then implement a set of test constraints using
 each of the available tools and compare them according to expressiveness,
-verbosity, readability, running times, etc. Finally, we identify the tool that
-best suits our concrete needs and proceed to implement the constraint
-validation features in @Web.
+verbosity, readability, etc.
 
-Our analysis shows that plain SPARQL queries yield the best running times
-amongst the technologies considered. We also observe that certain constraints
-expressed in both Shape Expressions and SHACL require nesting SPARQL queries
-that are comparable in length to stand-alone SPARQL queries implementing those
-same constraints, thus defeating the purpose of an alternate constraint
-language. To conclude, we propose modifications to both the Shape Expressions
-and SHACL languages that would allow all our use cases.
+Our analysis shows that none of the libraries implementing the Shape
+Expressions recommendation fully support all our use cases. We also observe
+that certain constraints expressed in SHACL require nesting SPARQL queries that
+are comparable in length to stand-alone SPARQL queries implementing those same
+constraints, thus defeating the purpose of an alternate constraint language.
+
+We finish our analysis by comparing the running times of a set of test
+constraints implemented as SPARQL queries against different triple stores
+supported by Jena, a Java library for building Semantic Web applications which
+is already used in @Web for other purposes.
+
+With this information, we choose SPARQL as the technology for expressing
+integrity constraints in @Web, we adopt the triple store that yields the best
+running times for our test constraints, and we proceed to implement the
+constraint verification features in the @Web platform.
+
+To conclude, we propose modifications to both the Shape Expressions and SHACL
+languages that would allow all our use cases.
 
 \textbf{Keywords}: Semantic Web, RDF, OWL, SPARQL, Shape Expressions, SHACL,
 Constraints, @Web.
