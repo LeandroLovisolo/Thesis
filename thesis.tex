@@ -1,13 +1,21 @@
 \documentclass[a4paper, 10pt]{article}
 \usepackage[margin=1.5in]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage{xspace} % Needed for \xspace
+\usepackage{amssymb}
 \usepackage{hyperref} % Needed for \href
+\usepackage{xspace} % Needed for \xspace
 \usepackage{graphicx} % Needed for \includegraphics
 \usepackage{float} % Needed for figures with the H placement specifier
 
 % Utility macros
-\newcommand{\atweb}{\textbf{@Web}\xspace}
+\newcommand{\header}[1]{
+  \begin{center}
+    \textbf{\uppercase{#1}}
+  \end{center}
+  \vspace{-1em}
+}
+\newcommand{\fnhref}[2]{\href{#2}{#1}\footnote{\url{#2}}}
+\newcommand{\ifnhref}[2]{\textit{\fnhref{#1}{#2}}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\img}[3]{
   \begin{figure}[H]
@@ -17,10 +25,8 @@
     \end{center}
   \end{figure}
 }
-\newcommand{\fnhref}[2]{\href{#2}{#1}\footnote{\url{#2}}}
-\newcommand{\ifnhref}[2]{\textit{\fnhref{#1}{#2}}}
 
-% Formatting
+% Paragraph formatting
 \setlength{\parskip}{1em}
 
 % Prevent hyphenation
@@ -29,7 +35,15 @@
 \hyphenpenalty=10000
 \hbadness=10000
 
+% Bullets in nested \itemize environments
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{---}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
+
+\header{Summary}
 
 In this thesis we study different techniques for expressing and verifying
 integrity constraints over data stored in ontologies built using
@@ -82,5 +96,68 @@ languages that would allow all our use cases.
 \textbf{Keywords}: Semantic Web, RDF, OWL, SPARQL, Shape Expressions, SHACL,
 Constraints, @Web.
 
-\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
+
+\header{Thesis outline}
+
+\begin{itemize}
+  \item Summary
+
+  \item Introduction
+
+  \textit{Problem statement, introduction to the @Web platform, examples of
+  actual constraints we would like to verify.}
+
+  \item Survey of current W3C recommendations
+
+  \textit{Brief introduction to the recommendations evaluated.}
+
+  \begin{itemize}
+    \item SPARQL
+    \item Shape Expressions
+    \item SHACL
+  \end{itemize}
+
+  \item Evaluation of W3C recommendations
+
+  \textit{Description of the evaluation methodology, criteria used, etc.}
+
+  \begin{itemize}
+    \item Constraints used for the evaluation of technologies
+
+    \item Constraint implementations
+
+    \begin{itemize}
+      \item SPARQL
+      \item Shape Expressions
+      \item SHACL
+    \end{itemize}
+
+    \item Discussion
+
+    \item Conclusions
+  \end{itemize}
+
+  \item Evaluation of SPARQL
+
+  \begin{itemize}
+    \item SPARQL queries used during experimentation
+    \item Triple store implementations evaluated
+    \item Experiments
+    \item Results
+    \item Discussion
+    \item Conclusions
+  \end{itemize}
+
+  \item Implementation
+
+  \item Conclusions
+
+  \item Suggested modifications to the Shape Expressions and SHACL languages
+
+  \item Future work
+\end{itemize}
+
+\end{document}
