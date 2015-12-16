@@ -20,6 +20,12 @@
 % Formatting
 \setlength{\parskip}{1em}
 
+% Prevent hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
 \begin{document}
 
 In this thesis we study different techniques for expressing and verifying
@@ -27,19 +33,19 @@ integrity constraints over data stored in ontologies built using Semantic Web
 technologies.
 
 This work is motivated by data validation requirements in the @Web platform, a
-Semantic Web application that allows domain experts to extract data in
-scientific documents, and researchers to explore and query those data via a
-graphical user interface. The extracted data is stored in a publicly
-accessible RDF graph following a predefined OWL ontology, and shared with the
-research community.
+Semantic Web application that allows domain experts to annotate experimental
+data in scientific documents, and researchers to explore and query those
+annotations via a graphical user interface. The annotations are stored in a
+publicly accessible RDF graph using a vocabulary predefined in an OWL ontology,
+and shared with the research community.
 
-Given the error-prone nature of the data extraction process, a set of
-integrity constraints has been identified that all extracted data must
-fulfill. It is desired to validate these constraints automatically and report
-any validation errors to the domain expert during the data extraction process.
+Given the error-prone nature of the data annotation process, a set of integrity
+constraints has been identified that all annotated data must fulfill. It is
+desired to validate these constraints automatically and report any validation
+errors to the domain expert during the data annotation process.
 
 To this end, we first survey the current W3C recommendations for querying,
-describing and constraining the contents of RDF graphs and the available tools
+describing and constraining the contents of RDF graphs, and the available tools
 implementing these recommendations. We decide to focus our analysis on SPARQL,
 Shape Expressions and SHACL. We then implement a set of test constraints using
 each of the available tools and compare them according to expressiveness,
@@ -61,7 +67,7 @@ integrity constraints in @Web, we adopt the triple store that yields the best
 running times for our test constraints, and we proceed to implement the
 constraint verification features in the @Web platform.
 
-To conclude, we propose modifications to both the Shape Expressions and SHACL
+To conclude, we suggest modifications to both the Shape Expressions and SHACL
 languages that would allow all our use cases.
 
 \textbf{Keywords}: Semantic Web, RDF, OWL, SPARQL, Shape Expressions, SHACL,
